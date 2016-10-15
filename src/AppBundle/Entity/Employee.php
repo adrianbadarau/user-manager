@@ -48,7 +48,7 @@ class Employee
      */
     private $supervisor_id;
     /**
-     * @ORM\ManyToOne(targetEntity="Employee")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id",nullable=true)
      */
     private $supervisor;
@@ -210,8 +210,6 @@ class Employee
     {
         $this->lastLogin = $lastLogin;
     }
-
-
 
 
 }
