@@ -3,15 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Employee;
+use AppBundle\Form\CreateEmployeeForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class EmployeeController extends Controller
 {
@@ -29,12 +26,15 @@ class EmployeeController extends Controller
      **/
     public function createEmployeeAction(Request $request)
     {
+//        $form = $this->createForm(CreateEmployeeForm::class);
+
         $employee = new Employee();
         $employee->setEmail($request->get("email"));
         $employee->setFirstName($request->get("fName"));
         $employee->setLastName($request->get("lName"));
         $employee->setGender($request->get("gender"));
         $employee->setPicture($request->get("picture"));
+        $employee->setPlainPassword($request->get('plainPassword'));
         $em = $this->getDoctrine()->getManager();
         $em->persist($employee);
         $em->flush();
