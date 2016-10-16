@@ -1,9 +1,40 @@
 <script type="text/ng-template" id="/modules/employees-index.html">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<h2>{{ title }}</h2>
-			<h3>[[ subtitle ]]</h3>
-			<a class="btn btn-default" ng-click="gotoView('employees/')">CHANGE SUBVIEW</a>
-		</div>
-	</div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        First Name
+                        <input type="text" name="FirstName">
+                    </th>
+                    <th>
+                        Last Name
+                        <input type="text" name="LastName">
+                    </th>
+                    <th>Supervisor</th>
+                    <th>Gender</th>
+                    <th>Pic</th>
+                    <th>Email</th>
+                    <th>
+                        Duties
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="employee in employees">
+                    <td>[[employee.first_name]]</td>
+                    <td>[[employee.last_name]]</td>
+                    <td><span ng-if="employee.supervisor">[[employee.supervisor.first_name + " " + employee.supervisor.last_name]]</span> <span ng-if="!employee.supervisor">No supervisor</span></td>
+                    <td><span ng-if="employee.gender">Male</span><span ng-if="!employee.gender">Female</span></td>
+                    <td>@mdo</td>
+                    <td>[[employee.email]]</td>
+                    <td>
+                        <span ng-repeat="duty in employee.duties">[[duty.label]] </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </script>

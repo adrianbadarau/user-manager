@@ -47,7 +47,7 @@ class EmployeeController extends Controller
     }
 
     /**
-     * @Route("/employees/create")
+     * @Route("/api/employees/create")
      * @Method("POST")
      **/
     public function createEmployeeAction(Request $request)
@@ -68,7 +68,7 @@ class EmployeeController extends Controller
     }
 
     /**
-     * @Route("/employees/{id}")
+     * @Route("/api/employees/{id}")
      * @Method("GET")
      **/
     public function showEmployeeAction($id)
@@ -80,7 +80,7 @@ class EmployeeController extends Controller
     }
 
     /**
-     * @Route("/employees/{id}")
+     * @Route("/api/employees/{id}")
      * @Method({"POST","PUT"})
      **/
     public function updateEmployeeAction($id)
@@ -99,7 +99,7 @@ class EmployeeController extends Controller
     }
 
     /**
-     * @Route("/employees/{id}")
+     * @Route("/api/employees/{id}")
      * @Method("DELETE")
      **/
     public function deleteEmployeeAction($id)

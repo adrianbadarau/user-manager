@@ -6,7 +6,7 @@ app.config(['$interpolateProvider', '$routeProvider', function($interpolateProvi
 	//-----------------------------------
 	$routeProvider.when('/employees/index', {
 		templateUrl: '/modules/employees-index.html',
-		controller: 'homeSlideAController'
+		controller: 'employeesIndexController'
 	}).when('/home/b', {
 		templateUrl: '/modules/slideB.html',
 		controller: 'homeSlideBController'
@@ -26,8 +26,12 @@ app.controller('appController', ['$scope', '$location', function($scope, $locati
 		$location.path(view);
 	};
 }]);
-app.controller('homeSlideAController', ['$scope', function($scope) {
-	$scope.subtitle = "Subtitle SlideA from Angular";
+app.controller('employeesIndexController', ['$scope','$http', function($scope, $http) {
+	$scope.employees = [];
+	$http.get('/api/employees').then(function (response) {
+		console.log(response);
+		$scope.employees = response.data;
+	})
 }]);
 app.controller('homeSlideBController', ['$scope', function($scope) {
 	$scope.subtitle = "Subtitle SlideB from Angular";
